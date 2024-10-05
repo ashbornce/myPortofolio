@@ -1,0 +1,437 @@
+:root {
+  --primary: #2d2d2d;
+  --accent: #5a6268;
+  --highlight: #ffb74d;
+  --text: #f4f4f4;
+  --text2: #000;
+}
+
+/* * untuk mengatur semua atau select all */
+* {
+  margin: 0; /*semua margin 0 */
+  padding: 0; /*semua padding 0 */
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--text2);
+}
+
+nav {
+  display: flex;
+  background-color: var(--highlight);
+  padding: 1.4rem 10%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+nav .logo-nav {
+  color: #000;
+  font-size: 2rem;
+  font-weight: 600;
+  font-style: italic;
+  text-shadow: 3px 4px 5px rgba(255, 255, 255, alpha);
+}
+
+nav .logo-nav span {
+  color: var(--text);
+  /* outline text */
+  text-shadow: 1px 1px 0 #000, /* bottom-right */ -1px 1px 0 #000,
+    /* bottom-left */ 1px -1px 0 #000, /* top-right */ -1px -1px 0 #000; /* top-left */
+}
+
+#hamburger {
+  color: var(--primary);
+  font-size: 2rem;
+}
+
+/* Sidebar */
+aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  position: fixed; /* Sidebar tetap mengikuti posisi layar */
+  right: -100%; /* Awalnya di luar layar */
+  top: 4rem; /* Align sidebar directly below the navbar */
+  height: 100vh;
+  width: 15rem; /* Lebar sidebar */
+  background-color: var(--highlight);
+  padding: 2rem 1rem;
+  transition: right 0.3s ease; /* Animasi smooth ketika sidebar muncul */
+  z-index: 99;
+}
+
+aside.active {
+  right: 0; /* Sidebar masuk ke dalam layar */
+}
+
+aside .nav-link {
+  display: flex;
+  flex-direction: column; /* Membuat link kebawah */
+  width: 100%;
+}
+
+aside .nav-link a {
+  padding: 1rem 0; /* Ruang pada setiap link */
+  color: var(--primary);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center; /* Supaya icon dan teks sejajar */
+}
+
+aside .nav-link a i {
+  margin-right: 1rem; /* Jarak antara icon dan teks */
+}
+
+aside .nav-link a:hover {
+  color: #999; /* Ganti warna saat hover */
+}
+
+aside.active {
+  right: 0; /* Jika ada kelas active, sidebar ditampilkan */
+}
+/* Sidebar end */
+
+/* Nav dan side bar  */
+/* Navbar dan sidebar default tanpa scroll */
+nav,
+aside {
+  background-color: var(--highlight); /* Tanpa transparansi */
+  transition: background-color 0.3s ease;
+}
+
+/* CSS untuk mengatur transparansi ketika scroll */
+nav.transparent,
+aside.transparent {
+  background-color: var(--highlight); /* Transparan 70% */
+}
+
+/* Hero section start */
+/* Hero section start */
+.hero {
+  display: flex;
+  width: 100%;
+  padding: 1rem 0 5rem 0;
+  background-color: var(--primary);
+  justify-content: space-between; /* Align children horizontally with space between */
+  align-items: center; /* Align children vertically in the center */
+  flex: 1 1 45rem;
+  position: relative; /* Make the hero the reference for absolute positioning */
+  overflow: hidden; /* Ensure the pseudo-elements don’t overflow */
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(3, 3, 3, 0.4); /* Overlay with 40% transparency */
+  z-index: 1;
+}
+
+.hero::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  bottom: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(1, 1, 3, 1) 5%,
+    /* Dark color at the bottom */ rgba(255, 255, 255, 0) 50%
+      /* Transparent fade to the top */
+  );
+  z-index: 2; /* Ensure it's above ::before */
+}
+
+.hero .hero-img {
+  flex: 1; /* Allow the image to take up space */
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0; /* Remove bottom margin to keep them aligned */
+}
+.hero .hero-img img {
+  width: 100%;
+  height: auto;
+  border: none solid;
+  border-radius: 5rem;
+}
+
+.hero .hero-content {
+  flex: 1; /* Allow the content to take up space */
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 5%;
+  margin-bottom: 0; /* Remove bottom margin to keep them aligned */
+}
+
+.hero .hero-content h1 {
+  color: var(--text);
+  font-size: 2.3rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+}
+
+.hero .hero-content p {
+  color: var(--text);
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(141, 128, 128, 0.9);
+}
+
+/* About section start */
+.about {
+  padding: 7rem 5%;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.about .container {
+  background-color: var(--primary);
+  padding: 5rem 15%;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.about h2 {
+  color: var(--accent);
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.781);
+}
+
+.about .container p {
+  color: var(--text);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+/* About section end */
+
+/* Skill section start */
+.skill {
+  padding: 7rem 25%;
+  justify-content: center;
+  align-items: start;
+  text-align: center;
+}
+
+.skill .container {
+  background-color: var(--accent);
+  padding: 2rem 10%;
+  text-align: center;
+  border-radius: 1.3rem;
+}
+
+.skill h2 {
+  font-size: 3rem;
+  color: var(--accent);
+  margin-bottom: 3rem;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.781);
+}
+
+.skill .container p {
+  font-size: 1.3rem;
+  color: var(--text2);
+  margin-bottom: 3rem;
+}
+
+.skill .container .skill-list {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap into multiple rows */
+  justify-content: space-evenly; /* Space out columns evenly */
+  border-top: 2px solid #000;
+  padding-top: 1rem;
+  margin: 0.5rem 0;
+}
+
+.skill .container .skill-list span {
+  flex: 1 1 calc(33.33% - 1rem); /* Each item takes up one-third of the container */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+  margin-bottom: 1rem; /* Space between rows */
+  transition: 0.3s ease;
+}
+
+.skill .container .skill-list span:hover {
+  transform: scale(1.2);
+  color: #fff;
+}
+/* Skill section end */
+
+/* Mission section start */
+.mission {
+  padding: 7rem 20%;
+  text-align: center;
+}
+
+.mission h2 {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  color: var(--accent);
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.781);
+}
+
+.mission p {
+  color: var(--text);
+  font-size: 1.3rem;
+}
+/* Mission section end */
+
+/* Contcat section start */
+.contact {
+  padding: 7rem 20%;
+  text-align: center;
+}
+
+.contact h2 {
+  color: var(--accent);
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.781);
+}
+
+.contact .row {
+  display: flex;
+  margin-top: 3rem;
+  padding: 0;
+  background-color: var(--primary);
+  border-radius: 2rem;
+}
+
+.contact .row .img {
+  flex: 1; /* Mengizinkan gambar untuk mengambil ruang yang sama */
+  max-width: 20rem; /* Membatasi lebar maksimum gambar */
+  display: flex; /* Mengaktifkan flexbox */
+  justify-content: center; /* Menempatkan gambar di tengah secara horizontal */
+  align-items: center; /* Menempatkan gambar di tengah secara vertikal */
+  overflow: hidden; /* Memastikan tidak ada konten yang meluap */
+}
+
+.contact .row .img img {
+  max-width: 100%; /* Memastikan gambar memenuhi lebar kontainer */
+  height: auto; /* Mempertahankan rasio aspek gambar */
+  border-radius: 2rem 0 0 2rem; /* Radius sudut untuk gambar */
+}
+
+.contact .row .message {
+  flex: 2; /* Mengizinkan pesan untuk mengambil ruang lebih banyak */
+  padding: 5rem 3rem;
+  text-align: center;
+}
+
+.contact .row .message .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Jarak antar input */
+}
+
+.contact .row .message .input {
+  display: flex;
+  align-items: center; /* Agar ikon dan input sejajar secara vertikal */
+  background-color: var(--text2);
+  border: 1px solid var(--highlight);
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+}
+
+.contact .row .message .input i {
+  margin-right: 0.1rem; /* Jarak antara ikon dan input */
+  color: #ccc; /* Warna ikon */
+}
+
+.contact .row .message .input a {
+  border: none; /* Hapus border default input */
+  outline: none; /* Hapus outline saat di klik */
+  flex: 1; /* Input mengambil sisa ruang yang tersedia */
+  padding: 0.8rem;
+  background: transparent; /* Transparan agar sesuai dengan background input */
+  color: #fff; /* Warna teks input */
+}
+/* Contcat section end */
+
+/* Footer */
+footer {
+  padding-top: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+footer .content {
+  background-color: var(--accent);
+  text-align: center;
+  padding: 2rem;
+}
+footer .content p {
+  color: var(--text);
+  font-size: 1.3rem;
+}
+
+/* Media query */
+/* Tablet */
+@media (max-width: 768px) {
+  html {
+    font-size: 75%;
+  }
+
+  .hero {
+    flex-wrap: wrap; /* Allow wrapping of child elements */
+    justify-content: center; /* Center the items */
+    padding-bottom: 10rem;
+  }
+
+  .hero .hero-img {
+    flex: 1 1 100%; /* Take full width on smaller screens */
+    justify-content: center; /* Center the image */
+    display: flex; /* Ensure flex properties work */
+    margin-bottom: 2rem; /* Add margin for spacing */
+  }
+
+  .hero .hero-content {
+    flex: 1 1 100%; /* Take full width on smaller screens */
+    text-align: center; /* Center align text */
+  }
+
+  .skill {
+    padding: 7rem 10%;
+    justify-content: center;
+    align-items: start;
+  }
+
+  .contact .row {
+    flex-direction: column-reverse; /* Stack items vertically */
+    align-items: center; /* Center items */
+    text-align: center; /* Center text within the row */
+  }
+
+  .contact .row .img {
+    flex: 0 0 auto; /* Allow the image to take its intrinsic size */
+    max-width: 80%; /* Set max width for the image */
+    margin-bottom: 2rem; /* Space between image and message */
+  }
+
+  .contact .row .message {
+    flex: 1 1 auto; /* Allow message to take available space */
+    padding: 2rem 1rem; /* Adjust padding for better appearance */
+  }
+}
+
+/* Smartphone */
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+}
